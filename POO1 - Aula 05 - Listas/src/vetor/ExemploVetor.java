@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ExemploVetor {
 	public static void main(String[] args) {
 		criarVetorEstatico();
-		criarVetorDinamico();
+		ExemploVetor.criarVetorDinamico();
 	}
 
 	public static void criarVetorEstatico() {
