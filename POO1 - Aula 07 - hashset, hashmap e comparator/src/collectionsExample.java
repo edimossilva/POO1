@@ -1,6 +1,7 @@
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -15,7 +16,22 @@ public class collectionsExample {
 		pessoas.add(new Pessoa("edi", 26, new BigDecimal("1.85")));
 		pessoas.add(new Pessoa("mar", 20, new BigDecimal("1.75")));
 		pessoas.add(new Pessoa("nat", 18, new BigDecimal("1.60")));
-		Collections.sort(pessoas);
+
+		Comparator<Pessoa> comparatorPorNome = new Comparator<Pessoa>() {
+			@Override
+			public int compare(Pessoa arg0, Pessoa arg1) {
+				return arg0.getNome().compareTo(arg1.getNome());
+			}
+		};
+		Comparator<Pessoa> comparatorPorIdade = new Comparator<Pessoa>() {
+			@Override
+			public int compare(Pessoa arg0, Pessoa arg1) {
+				return Integer.compare(arg0.getIdade(), arg1.getIdade());
+			}
+		};
+		Collections.sort(pessoas, comparatorPorNome);
+		System.out.println(pessoas);
+		Collections.sort(pessoas, comparatorPorIdade);
 		System.out.println(pessoas);
 	}
 
@@ -50,7 +66,7 @@ public class collectionsExample {
 		hashMap.put("numeroGrande", Integer.MAX_VALUE);
 
 		System.out.println(hashMap.get("um"));
-		
+
 		HashMap<String, String> pessoa = new HashMap<String, String>();
 		pessoa.put("nome", "edimo sousa");
 		pessoa.put("idade", "26");
