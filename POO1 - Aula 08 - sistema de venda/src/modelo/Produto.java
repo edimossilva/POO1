@@ -25,4 +25,14 @@ public class Produto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+
+
+	public Produto getCopy() {
+		return new Produto(getNome(), getPreco());
+	}
+
+	@Override
+	public String toString() {
+		return "(Nome: " + getNome() + " ,preco: " + getPreco()+")";
+	}
 }

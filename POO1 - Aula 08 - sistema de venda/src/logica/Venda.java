@@ -11,6 +11,24 @@ public class Venda {
 		itemList.add(item);
 	}
 
+	public void vender(Estoque estoque) {
+		boolean podeVender = true;
+		for (Item item : itemList) {
+			if (!estoque.temItemDisponivel(item)) {
+				System.out.println("nao pode vender");
+				podeVender = false;
+				break;
+			}
+		}
+		if(podeVender) {
+			for (Item item : itemList) {
+				estoque.decrementaItem(item);
+			}
+			System.out.println("Venda realizada");
+		}
+		
+	}
+
 	public double calcularTotal() {
 		double total = 0;
 		for (Item item : itemList) {

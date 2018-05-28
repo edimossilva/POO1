@@ -1,5 +1,6 @@
 package modelo;
 
+import logica.Estoque;
 import logica.Venda;
 
 public class Principal {
@@ -13,6 +14,11 @@ public class Principal {
 		Venda venda = new Venda();
 		venda.adicionarItem(item);
 		venda.adicionarItem(item2);
-		venda.exibirTotalDetalhado();
+		//venda.exibirTotalDetalhado();
+		Estoque estoque = new Estoque();
+		estoque.adicionarItem(item);
+		estoque.adicionarItem(item2);
+		
+		venda.vender(estoque);
 	}
 }
