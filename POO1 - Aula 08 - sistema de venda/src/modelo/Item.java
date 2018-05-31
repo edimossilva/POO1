@@ -1,5 +1,7 @@
 package modelo;
 
+import logica.DescontoAVista;
+
 public class Item {
 	private Produto produto;
 	private int quantidade;
@@ -25,11 +27,14 @@ public class Item {
 		this.quantidade = quantidade;
 	}
 
-	public double calcularTotal() {
-		return getProduto().getPreco() * getQuantidade();
+	public double calcularTotal(DescontoAVista desconto) {
+		double total = getProduto().getPreco() * getQuantidade();
+		double porcentagemFinal = 1 - desconto.getPorcentagem()/100;
+
+		return total * porcentagemFinal;
 	}
 
-	public void exibirTotalDetalhado() {
+	public void exibirTotalDetalhado(DescontoAVista desconto) {
 		String produto = getProduto().getNome();
 		String preco = getProduto().getPreco() + "";
 		String separador1 = "(";
@@ -37,7 +42,7 @@ public class Item {
 		String vezes = " x ";
 		String quantidade = "quantidade(" + getQuantidade() + ")";
 		String separador3 = " = ";
-		String total = calcularTotal() + "";
+		String total = calcularTotal(desconto) + "";
 		String reais = "R$";
 		System.out.println(produto + separador1 + preco + separador2 + vezes + quantidade + separador3 + reais + total);
 	}
@@ -53,9 +58,10 @@ public class Item {
 	public void decrementarQuantidade(int quantidade2) {
 		this.quantidade -= quantidade2;
 	}
+
 	@Override
 	public String toString() {
-		return "Produto: "+getProduto()+" ,quantidade: "+getQuantidade();
+		return "Produto: " + getProduto() + " ,quantidade: " + getQuantidade();
 	}
 
 	public Item getCopy() {

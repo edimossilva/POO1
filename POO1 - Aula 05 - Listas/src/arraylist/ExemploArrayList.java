@@ -23,22 +23,30 @@ public class ExemploArrayList {
 //			System.out.println(linguagem);
 //		}
 //
-		System.out.println("\nremovendo elemento na posicao 2");
-		linguagens.remove(2);
+//		System.out.println("\nremovendo elemento na posicao 2");
+//		linguagens.remove(2);
 
 //		System.out.println("\nusando 'foreach'");
 //		for (String linguagem : linguagens) {
 //			System.out.println("Linguagem: " + linguagem);
 //		}
 
-		ArrayList<String> linguagensAntigas = new ArrayList<>();
-		linguagensAntigas.add("Cobol");
-		linguagensAntigas.add("C");
-		linguagensAntigas.add("Delphi");
+//		ArrayList<String> linguagensAntigas = new ArrayList<>();
+//		linguagensAntigas.add("Cobol");
+//		linguagensAntigas.add("C");
+//		linguagensAntigas.add("Delphi");
 //
-		linguagens.addAll(linguagensAntigas);
+//		linguagens.addAll(linguagensAntigas);
+		
 		System.out.println("\nusando foreach j8");
-		linguagens.forEach(s -> System.out.println(s));
+		
+		
+		
+		linguagens.forEach(
+				s -> System.out.println(
+						linguagens.indexOf(s)+ " = "+s
+					)
+				);
 
 	}
 }

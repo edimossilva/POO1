@@ -5,7 +5,7 @@ import java.util.HashMap;
 import modelo.Item;
 
 public class Estoque {
-	private HashMap<String, Item> itens = new HashMap();
+	private HashMap<String, Item> itens = new HashMap<String, Item>();
 
 	public void adicionarItem(Item item) {
 		if (itemExisteNoMap(item)) {

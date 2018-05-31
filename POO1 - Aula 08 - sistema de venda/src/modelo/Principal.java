@@ -1,5 +1,6 @@
 package modelo;
 
+import logica.DescontoAVista;
 import logica.Estoque;
 import logica.Venda;
 
@@ -19,6 +20,6 @@ public class Principal {
 		estoque.adicionarItem(item);
 		estoque.adicionarItem(item2);
 		
-		venda.vender(estoque);
+		venda.vender(estoque, new DescontoAVista(10));
 	}
 }

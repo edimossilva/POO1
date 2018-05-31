@@ -11,7 +11,7 @@ public class Venda {
 		itemList.add(item);
 	}
 
-	public void vender(Estoque estoque) {
+	public void vender(Estoque estoque, DescontoAVista desconto) {
 		boolean podeVender = true;
 		for (Item item : itemList) {
 			if (!estoque.temItemDisponivel(item)) {
@@ -20,29 +20,30 @@ public class Venda {
 				break;
 			}
 		}
-		if(podeVender) {
+		if (podeVender) {
 			for (Item item : itemList) {
 				estoque.decrementaItem(item);
 			}
+			exibirTotalDetalhado(desconto);
 			System.out.println("Venda realizada");
 		}
-		
+
 	}
 
-	public double calcularTotal() {
+	public double calcularTotal(DescontoAVista desconto) {
 		double total = 0;
 		for (Item item : itemList) {
-			total += item.calcularTotal();
+			total += item.calcularTotal(desconto);
 		}
 		return total;
 	}
 
-	public void exibirTotalDetalhado() {
+	public void exibirTotalDetalhado(DescontoAVista desconto) {
 		System.out.println("Nota Fiscal");
 		for (Item item : itemList) {
-			item.exibirTotalDetalhado();
+			item.exibirTotalDetalhado( desconto);
 		}
-		String total = "Total = R$" + calcularTotal();
+		String total = "Total = R$" + calcularTotal(desconto);
 		System.out.println(total);
 	}
 }
